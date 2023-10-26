@@ -6,18 +6,18 @@ int main(){
     while(t--){
         int m,c;
         cin>>m>>c;
-        int ok[c][m]; // all possible states of money
+        int ok[20][201]; // max all possible states of money
         for(int i=0;i<c;i++){
             for(int j=0;j<m;j++)
                 ok[i][j]=0;
         }
-        int p[c][c+1]; // all product price
+        int p[20][21]; // max all product price
         for(int i=0;i<c;i++){
             cin>>p[i][0];
             for(int j=1;j<=p[i][0];j++)
                 cin>>p[i][j];
         }
-        for(int i=1;i<p[0][0];i++){
+        for(int i=1;i<=p[0][0];i++){
             if(m-p[0][i]>-1){
                 ok[0][m-p[0][i]]=1; // check state of money after buying first every products.
             }
@@ -38,7 +38,7 @@ int main(){
             m--;
         }
         if(m==0){
-            cout<<"No Solution\n";
+            cout<<"no solution\n";
         }
         else{
             cout<<m<<"\n";
